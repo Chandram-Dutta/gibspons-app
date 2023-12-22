@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final lightTheme = ThemeData(
+  cardColor: Colors.white,
   navigationBarTheme: const NavigationBarThemeData(
     backgroundColor: Color.fromRGBO(25, 25, 25, 1),
     indicatorColor: Color.fromRGBO(83, 121, 246, 1),

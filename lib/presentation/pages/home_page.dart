@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:gibspons/presentation/widgets/gibspons_logo.dart';
@@ -125,7 +126,29 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Expanded(
-                  child: widget.child,
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 64,
+                        child: Row(
+                          children: [
+                            const Spacer(),
+                            TextButton.icon(
+                              onPressed: () {},
+                              icon: const Icon(
+                                CupertinoIcons.person_crop_circle,
+                              ),
+                              label: const Text("Name"),
+                            ),
+                            const Gap(
+                              12,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(child: widget.child),
+                    ],
+                  ),
                 )
               ],
             ),
