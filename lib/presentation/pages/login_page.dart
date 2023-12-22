@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const GibSponsLogo(),
+                const GibSponsLogoLight(),
                 const Gap(48),
                 TextField(
                   decoration: InputDecoration(

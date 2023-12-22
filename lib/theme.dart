@@ -2,6 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final lightTheme = ThemeData(
+  navigationBarTheme: const NavigationBarThemeData(
+    backgroundColor: Color.fromRGBO(25, 25, 25, 1),
+    indicatorColor: Color.fromRGBO(83, 121, 246, 1),
+    iconTheme: MaterialStatePropertyAll(
+      IconThemeData(
+        color: Colors.white,
+      ),
+    ),
+    labelTextStyle: MaterialStatePropertyAll(
+      TextStyle(
+        color: Colors.white,
+      ),
+    ),
+    labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
+  ),
   fontFamily: GoogleFonts.outfit().fontFamily,
   filledButtonTheme: FilledButtonThemeData(style: primaryLightButtonStyle),
   colorScheme: const ColorScheme(
