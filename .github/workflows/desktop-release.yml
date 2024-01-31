@@ -34,7 +34,7 @@ jobs:
         with:
           files: build/linux/x64/release/bundle/GibSpons-${{github.ref_name}}-linux.zip
 
-  build-and-release-mac-intel:
+  build-and-release-mac:
     runs-on: macos-latest
     if: startsWith(github.ref, 'refs/tags/')
     steps:
@@ -52,7 +52,7 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: "zip"
-          filename: GibSpons-${{github.ref_name}}-macos-intel.zip
+          filename: GibSpons-${{github.ref_name}}-macos.zip
           directory: build/macos/Build/Products/Release
       - name: macOS Release
         uses: softprops/action-gh-release@v1
@@ -60,35 +60,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: build/macos/Build/Products/Release/GibSpons-${{github.ref_name}}-macos-intel.zip
-
-  build-and-release-mac-silicon:
-    runs-on: macos-latest-xlarge
-    if: startsWith(github.ref, 'refs/tags/')
-    steps:
-      - uses: actions/checkout@v3
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-      - name: Install project dependencies
-        run: flutter pub get
-      - name: Enable macOS build
-        run: flutter config --enable-macos-desktop
-      - name: Build artifacts
-        run: flutter build macos --release
-      - name: Archive Release
-        uses: thedoctor0/zip-release@master
-        with:
-          type: "zip"
-          filename: GibSpons-${{github.ref_name}}-macos-silicon.zip
-          directory: build/macos/Build/Products/Release
-      - name: macOS Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          files: build/macos/Build/Products/Release/GibSpons-${{github.ref_name}}-macos-silicon.zip
+          files: build/macos/Build/Products/Release/GibSpons-${{github.ref_name}}-macos.zip
 
   build-and-release-windows:
     runs-on: windows-latest
@@ -109,11 +81,11 @@ jobs:
         with:
           type: "zip"
           filename: GibSpons-${{github.ref_name}}-windows.zip
-          directory: build/windows/runner/Release
+          directory: build/windows/x64/runner/Release
       - name: Windows Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: build/windows/runner/Release/GibSpons-${{github.ref_name}}-windows.zip
+          files: build/windows/x64/runner/Release/GibSpons-${{github.ref_name}}-windows.zip
