@@ -42,7 +42,9 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const GibSponsLogoDark(),
+                          const GibSponsLogoDark(
+                            description: "By GDSC VIT",
+                          ),
                           const Gap(48),
                           ListTile(
                             selected: _selectedIndex == 0,

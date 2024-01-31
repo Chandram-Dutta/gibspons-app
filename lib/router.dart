@@ -6,10 +6,11 @@ import 'package:gibspons/presentation/pages/mail_generation_page.dart';
 import 'package:gibspons/presentation/pages/settings_page.dart';
 import 'package:gibspons/auth/presentation/pages/signup_page.dart';
 import 'package:gibspons/presentation/pages/view_mails_page.dart';
+import 'package:gibspons/shared/presentation/widgets/gibspons_logo.dart';
 import 'package:go_router/go_router.dart';
 
 final routes = GoRouter(
-  initialLocation: '/dashboard',
+  initialLocation: '/signup',
   routes: [
     ShellRoute(
       builder: (context, state, child) {
@@ -38,37 +39,47 @@ final routes = GoRouter(
     ),
     ShellRoute(
       builder: (context, state, child) {
-        return LayoutBuilder(
-          builder: (context, constraints) {
-            if (constraints.maxWidth > 500) {
-              return Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned.fill(
-                    child: Container(
-                      color: const Color.fromRGBO(23, 23, 23, 1),
-                      child: Image.asset(
-                        "assets/images/background.png",
-                        fit: BoxFit.cover,
+        return Scaffold(
+          body: LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth > 700) {
+                return Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Positioned.fill(
+                      child: Container(
+                        color: const Color.fromRGBO(23, 23, 23, 1),
+                        child: Image.asset(
+                          "assets/images/background.png",
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 64.0),
-                    child: SizedBox(
-                      width: 500,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: child,
-                      ),
-                    ),
-                  )
-                ],
-              );
-            } else {
-              return child;
-            }
-          },
+                    Row(
+                      children: [
+                        const Expanded(
+                          child: GibSponsLogoDark(
+                            description: "sponsorships made easier",
+                          ),
+                        ),
+                        Expanded(
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(12),
+                              bottomLeft: Radius.circular(12),
+                            ),
+                            child: child,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                );
+              } else {
+                return child;
+              }
+            },
+          ),
         );
       },
       routes: [

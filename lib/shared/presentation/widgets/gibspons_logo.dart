@@ -35,14 +35,15 @@ class GibSponsLogoLight extends StatelessWidget {
 }
 
 class GibSponsLogoDark extends StatelessWidget {
-  const GibSponsLogoDark({
-    super.key,
-  });
+  const GibSponsLogoDark({super.key, required this.description});
+
+  final String description;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Image.asset(
           "assets/images/gibspons-logo-dark.png",
@@ -51,6 +52,7 @@ class GibSponsLogoDark extends StatelessWidget {
         const Gap(8),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               "gibspons",
@@ -60,7 +62,7 @@ class GibSponsLogoDark extends StatelessWidget {
                   ),
             ),
             Text(
-              "By GDSC VIT.",
+              description,
               style: TextStyle(
                 color: Theme.of(context).colorScheme.surface,
               ),
