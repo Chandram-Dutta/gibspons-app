@@ -4,7 +4,10 @@ import 'package:gap/gap.dart';
 class GibSponsLogoLight extends StatelessWidget {
   const GibSponsLogoLight({
     super.key,
+    required this.description,
   });
+
+  final String description;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,7 @@ class GibSponsLogoLight extends StatelessWidget {
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
             ),
-            const Text("sponsorships made easier")
+            Text(description)
           ],
         )
       ],

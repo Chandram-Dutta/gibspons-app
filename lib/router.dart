@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gibspons/auth/presentation/pages/invite_code_page.dart';
 import 'package:gibspons/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:gibspons/shared/presentation/pages/home_page.dart';
 import 'package:gibspons/auth/presentation/pages/login_page.dart';
@@ -10,7 +11,7 @@ import 'package:gibspons/shared/presentation/widgets/gibspons_logo.dart';
 import 'package:go_router/go_router.dart';
 
 final routes = GoRouter(
-  initialLocation: '/signup',
+  initialLocation: '/invite-code',
   routes: [
     ShellRoute(
       builder: (context, state, child) {
@@ -38,7 +39,11 @@ final routes = GoRouter(
       ],
     ),
     ShellRoute(
-      builder: (context, state, child) {
+      builder: (
+        context,
+        state,
+        child,
+      ) {
         return Scaffold(
           body: LayoutBuilder(
             builder: (context, constraints) {
@@ -90,6 +95,10 @@ final routes = GoRouter(
         GoRoute(
           path: '/signup',
           builder: (context, state) => const SignUpPage(),
+        ),
+        GoRoute(
+          path: '/invite-code',
+          builder: (context, state) => const InviteCodePage(),
         ),
       ],
     ),

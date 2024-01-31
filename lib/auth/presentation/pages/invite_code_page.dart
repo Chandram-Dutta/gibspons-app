@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:gibspons/shared/presentation/widgets/gibspons_logo.dart';
-import 'package:go_router/go_router.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({
+class InviteCodePage extends StatefulWidget {
+  const InviteCodePage({
     super.key,
   });
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<InviteCodePage> createState() => _InviteCodePageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  bool _isPasswordVisible = true;
-
+class _InviteCodePageState extends State<InviteCodePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -32,63 +28,45 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    MediaQuery.of(context).size.width > 700
-                        ? const SizedBox()
-                        : const GibSponsLogoLight(
-                            description: "sponsorships made easier",
-                          ),
-                    const Gap(48),
-                    TextField(
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        labelText: "Email",
-                      ),
+                    Text(
+                      "You're almost there.",
+                      style: Theme.of(context).textTheme.headlineMedium,
                     ),
-                    const Gap(8),
+                    Text(
+                      "Complete your details to continue!",
+                      style: Theme.of(context).textTheme.headlineMedium,
+                      textAlign: TextAlign.center,
+                    ),
+                    const Gap(32),
                     TextField(
-                      obscureText: _isPasswordVisible,
                       decoration: InputDecoration(
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              _isPasswordVisible = !_isPasswordVisible;
-                            });
-                          },
-                          icon: Icon(
-                            _isPasswordVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                          ),
-                        ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        labelText: "Password",
+                        labelText: "Team Invite Code",
                       ),
                     ),
                     const Gap(18),
                     SizedBox(
                       width: double.infinity,
-                      height: 48,
+                      height: 52,
                       child: FilledButton(
                         onPressed: () {},
-                        child: const Text("Login"),
+                        child: const Text(
+                          "Complete Sign Up",
+                        ),
                       ),
                     ),
-                    const Gap(32),
+                    const Gap(18),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Don't have an account yet?"),
+                        const Text("Don't have an Invite Code?"),
                         const Gap(8),
                         GestureDetector(
-                          onTap: () {
-                            context.go('/signup');
-                          },
+                          onTap: () {},
                           child: Text(
-                            "Sign Up.",
+                            "Create Your Own Team",
                             style: TextStyle(
                               color: Theme.of(context).colorScheme.primary,
                             ),
