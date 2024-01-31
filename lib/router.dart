@@ -11,7 +11,7 @@ import 'package:gibspons/shared/presentation/widgets/gibspons_logo.dart';
 import 'package:go_router/go_router.dart';
 
 final routes = GoRouter(
-  initialLocation: '/invite-code',
+  initialLocation: '/signup',
   routes: [
     ShellRoute(
       builder: (context, state, child) {
