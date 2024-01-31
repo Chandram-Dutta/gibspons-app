@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gap/gap.dart';
-import 'package:gibspons/presentation/widgets/gibspons_logo.dart';
+import 'package:gibspons/shared/presentation/widgets/gibspons_logo.dart';
 import 'package:gibspons/theme.dart';
 import 'package:go_router/go_router.dart';
 

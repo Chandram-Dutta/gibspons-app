@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:gibspons/presentation/pages/dashboard_page.dart';
-import 'package:gibspons/presentation/pages/home_page.dart';
-import 'package:gibspons/presentation/pages/login_page.dart';
+import 'package:gibspons/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:gibspons/shared/presentation/pages/home_page.dart';
+import 'package:gibspons/auth/presentation/pages/login_page.dart';
 import 'package:gibspons/presentation/pages/mail_generation_page.dart';
 import 'package:gibspons/presentation/pages/settings_page.dart';
-import 'package:gibspons/presentation/pages/signup_page.dart';
+import 'package:gibspons/auth/presentation/pages/signup_page.dart';
 import 'package:gibspons/presentation/pages/view_mails_page.dart';
 import 'package:go_router/go_router.dart';
 

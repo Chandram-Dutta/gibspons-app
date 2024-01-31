@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:gibspons/presentation/widgets/gibspons_logo.dart';
+import 'package:gibspons/shared/presentation/widgets/gibspons_logo.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
