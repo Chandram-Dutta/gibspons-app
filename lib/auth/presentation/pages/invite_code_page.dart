@@ -43,7 +43,16 @@ class _InviteCodePageState extends State<InviteCodePage> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        labelText: "Team Invite Code",
+                        labelText: "Username",
+                      ),
+                    ),
+                    const Gap(18),
+                    TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        labelText: "Team Invite Code (Optional)",
                       ),
                     ),
                     const Gap(18),
@@ -58,15 +67,15 @@ class _InviteCodePageState extends State<InviteCodePage> {
                       ),
                     ),
                     const Gap(18),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      // mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text("Don't have an Invite Code?"),
-                        const Gap(8),
+                        const Text("Don't have an Invite Code?  "),
                         GestureDetector(
                           onTap: () {},
                           child: Text(
-                            "Create Your Own Team",
+                            "Complete sign up to create your own.",
                             style: TextStyle(
                               color: Theme.of(context).colorScheme.primary,
                             ),
