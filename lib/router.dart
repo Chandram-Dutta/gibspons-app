@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:gibspons/auth/presentation/pages/invite_code_page.dart';
 import 'package:gibspons/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:gibspons/shared/presentation/pages/home_page.dart';
@@ -11,7 +12,16 @@ import 'package:gibspons/shared/presentation/widgets/gibspons_logo.dart';
 import 'package:go_router/go_router.dart';
 
 final routes = GoRouter(
-  initialLocation: '/invite-code',
+  debugLogDiagnostics: true,
+  initialLocation: '/login',
+  redirect: (context, state) async {
+    const storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'access_token');
+    if (token == null) {
+      return '/login';
+    }
+    return null;
+  },
   routes: [
     ShellRoute(
       builder: (context, state, child) {

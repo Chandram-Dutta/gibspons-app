@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:gibspons/auth/repository/auth_repository.dart';
 import 'package:gibspons/shared/presentation/widgets/gibspons_logo.dart';
 import 'package:go_router/go_router.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends ConsumerStatefulWidget {
   const HomePage({
     super.key,
     required this.child,
@@ -13,10 +15,10 @@ class HomePage extends StatefulWidget {
   final Widget child;
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  ConsumerState<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends ConsumerState<HomePage> {
   int _selectedIndex = 0;
 
   @override
@@ -141,6 +143,14 @@ class _HomePageState extends State<HomePage> {
                                 CupertinoIcons.person_crop_circle,
                               ),
                               label: const Text("Name"),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                //todo: improve this
+                                ref.read(djangoAuthRepositoryProvider).logout();
+                                context.go('/login');
+                              },
+                              icon: const Icon(Icons.logout),
                             ),
                             const Gap(
                               12,
