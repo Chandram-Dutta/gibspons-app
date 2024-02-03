@@ -18,7 +18,15 @@ final routes = GoRouter(
     const storage = FlutterSecureStorage();
     final token = await storage.read(key: 'access_token');
     if (token == null) {
-      return '/login';
+      if (state.uri.toString() == '/login') {
+        return '/login';
+      } else if (state.uri.toString() == '/signup') {
+        return '/signup';
+      } else if (state.uri.toString() == '/invite-code') {
+        return '/invite-code';
+      } else {
+        return '/login';
+      }
     }
     return null;
   },
