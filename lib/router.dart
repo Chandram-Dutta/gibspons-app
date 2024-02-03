@@ -22,13 +22,17 @@ final routes = GoRouter(
         return '/login';
       } else if (state.uri.toString() == '/signup') {
         return '/signup';
-      } else if (state.uri.toString() == '/invite-code') {
-        return '/invite-code';
       } else {
         return '/login';
       }
+    } else {
+      if (state.uri.toString() == '/login' ||
+          state.uri.toString() == '/signup') {
+        return '/dashboard';
+      } else {
+        return null;
+      }
     }
-    return null;
   },
   routes: [
     ShellRoute(

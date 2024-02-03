@@ -62,6 +62,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                     CupertinoDialogAction(
                       isDefaultAction: true,
                       onPressed: () {
+                        Navigator.of(context).pop();
                         context.go('/login');
                       },
                       child: const Text("Login"),
