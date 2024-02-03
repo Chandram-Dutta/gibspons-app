@@ -35,7 +35,7 @@ jobs:
           files: build/linux/x64/release/bundle/GibSpons-${{github.ref_name}}-linux.zip
 
   build-and-release-mac:
-    runs-on: macos-latest
+    runs-on: macos-14
     if: startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v3
