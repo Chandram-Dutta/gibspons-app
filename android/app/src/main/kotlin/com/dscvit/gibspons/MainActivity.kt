@@ -1,4 +1,4 @@
-package com.example.gibspons
+package com.dscvit.gibspons
 
 import io.flutter.embedding.android.FlutterActivity
 
