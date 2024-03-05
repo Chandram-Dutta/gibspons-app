@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:gibspons/auth/domain/models/user_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -71,6 +72,14 @@ class DjangoAuthRepository extends AuthRepository {
       final Map<String, dynamic> data = jsonDecode(res.body);
       final String accessToken = data['data']['access_token'];
       final String refreshToken = data['data']['refresh_token'];
+      final UserModel user = UserModel(
+        name: data['data']['name'],
+        username: data['data']['username'],
+        email: data['data']['email'],
+        organisation: data['data']['organisation'],
+        role: data['data']['role'],
+      );
+      await storage.write(key: 'user', value: jsonEncode(user));
       await storage.write(key: 'access_token', value: accessToken);
       await storage.write(key: 'refresh_token', value: refreshToken);
       return;

@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:gibspons/auth/domain/models/user_model.dart';
+import 'package:gibspons/auth/presentation/pages/jointeam_page.dart';
 import 'package:gibspons/myteam/presentation/pages/myteam_page.dart';
 import 'package:gibspons/shared/presentation/pages/home_page.dart';
 import 'package:gibspons/auth/presentation/pages/login_page.dart';
@@ -15,6 +19,10 @@ final routes = GoRouter(
   redirect: (context, state) async {
     const storage = FlutterSecureStorage();
     final token = await storage.read(key: 'access_token');
+    final user = UserModel.fromJson(
+      jsonDecode((await storage.read(key: 'user')) ??
+          '{"name":"", "email":"", "username":"", "organisation":null, "role":null}'),
+    );
     if (token == null) {
       if (state.uri.toString() == '/login') {
         return '/login';
@@ -26,11 +34,14 @@ final routes = GoRouter(
     } else {
       if (state.uri.toString() == '/login' ||
           state.uri.toString() == '/signup') {
-        return '/my-team';
-      } else {
-        return null;
+        if (user.organisation == null) {
+          return '/join-team';
+        } else {
+          return '/my-team';
+        }
       }
     }
+    return null;
   },
   routes: [
     ShellRoute(
@@ -53,6 +64,10 @@ final routes = GoRouter(
           builder: (context, state) => const SponsorshipsPage(),
         ),
       ],
+    ),
+    GoRoute(
+      path: '/join-team',
+      builder: (context, state) => const JoinTeam(),
     ),
     ShellRoute(
       builder: (
