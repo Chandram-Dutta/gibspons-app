@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:gibspons/auth/repository/auth_repository.dart';
+import 'package:go_router/go_router.dart';
 
-class JoinTeam extends StatefulWidget {
+class JoinTeam extends ConsumerStatefulWidget {
   const JoinTeam({
     super.key,
   });
 
   @override
-  State<JoinTeam> createState() => _JoinTeamState();
+  ConsumerState<JoinTeam> createState() => _JoinTeamState();
 }
 
-class _JoinTeamState extends State<JoinTeam> {
+class _JoinTeamState extends ConsumerState<JoinTeam> {
   final TextEditingController _inviteCodeController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -23,7 +26,20 @@ class _JoinTeamState extends State<JoinTeam> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () async {
+              //todo: improve this
+              await ref.read(djangoAuthRepositoryProvider).logout();
+              if (context.mounted) {
+                context.go('/login');
+              }
+            },
+            icon: const Icon(Icons.logout),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
         child: Center(

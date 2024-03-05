@@ -126,10 +126,14 @@ class _HomePageState extends ConsumerState<HomePage> {
                               label: const Text("Name"),
                             ),
                             IconButton(
-                              onPressed: () {
+                              onPressed: () async {
                                 //todo: improve this
-                                ref.read(djangoAuthRepositoryProvider).logout();
-                                context.go('/login');
+                                await ref
+                                    .read(djangoAuthRepositoryProvider)
+                                    .logout();
+                                if (context.mounted) {
+                                  context.go('/login');
+                                }
                               },
                               icon: const Icon(Icons.logout),
                             ),

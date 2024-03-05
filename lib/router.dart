@@ -39,7 +39,17 @@ final routes = GoRouter(
         } else {
           return '/my-team';
         }
+      } else {
+        return null;
       }
+      // if (state.uri.toString() == '/login' ||
+      //     state.uri.toString() == '/signup') {
+      //   if (user.organisation == null) {
+      //     return '/join-team';
+      //   } else {
+      //     return '/my-team';
+      //   }
+      // }
     }
     return null;
   },
@@ -70,11 +80,7 @@ final routes = GoRouter(
       builder: (context, state) => const JoinTeam(),
     ),
     ShellRoute(
-      builder: (
-        context,
-        state,
-        child,
-      ) {
+      builder: (context, state, child) {
         return Scaffold(
           body: LayoutBuilder(
             builder: (context, constraints) {

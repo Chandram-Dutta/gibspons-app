@@ -42,7 +42,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
           );
         } else {
           if (!state.isLoading && state.hasValue) {
-            context.go('/dashboard');
+            context.go('/join-team');
           }
         }
       },

@@ -97,6 +97,7 @@ class DjangoAuthRepository extends AuthRepository {
       const storage = FlutterSecureStorage();
       await storage.delete(key: 'access_token');
       await storage.delete(key: 'refresh_token');
+      await storage.delete(key: 'user');
       return;
     } else {
       throw Exception("${res.body} - ${res.statusCode}");
