@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -26,7 +27,7 @@ abstract class AuthRepository {
 }
 
 class DjangoAuthRepository extends AuthRepository {
-  final String url = "http://127.0.0.1:8000/";
+  final String url = dotenv.env['BASE_URL']!;
 
   @override
   Future<String> getToken() async {
@@ -67,8 +68,9 @@ class DjangoAuthRepository extends AuthRepository {
     );
     if (res.statusCode == 200) {
       const storage = FlutterSecureStorage();
-      final String accessToken = jsonDecode(res.body)["access_token"];
-      final String refreshToken = jsonDecode(res.body)["refresh_token"];
+      final Map<String, dynamic> data = jsonDecode(res.body);
+      final String accessToken = data['data']['access_token'];
+      final String refreshToken = data['data']['refresh_token'];
       await storage.write(key: 'access_token', value: accessToken);
       await storage.write(key: 'refresh_token', value: refreshToken);
       return;
@@ -108,6 +110,7 @@ class DjangoAuthRepository extends AuthRepository {
       Uri.parse("${url}users/register/"),
       body: jsonEncode({
         "name": name,
+        "username": name,
         "email": email,
         "password": password,
       }),

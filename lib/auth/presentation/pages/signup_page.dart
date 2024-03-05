@@ -22,6 +22,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -29,6 +30,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
     _emailController.dispose();
     _passwordController.dispose();
     _nameController.dispose();
+    _usernameController.dispose();
     super.dispose();
   }
 
@@ -106,11 +108,23 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                           }
                           return null;
                         },
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
+                        decoration: const InputDecoration(
                           labelText: "Name",
+                        ),
+                      ),
+                      const Gap(8),
+                      TextFormField(
+                        controller: _usernameController,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Username cannot be empty";
+                          } else if (!isAlphanumeric(value)) {
+                            return "Username must be alphanumeric";
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                          labelText: "Username",
                         ),
                       ),
                       const Gap(8),
@@ -124,10 +138,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                           }
                           return null;
                         },
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
+                        decoration: const InputDecoration(
                           labelText: "Email",
                         ),
                       ),
@@ -153,9 +164,6 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
                                   ? Icons.visibility
                                   : Icons.visibility_off,
                             ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
                           ),
                           labelText: "Password",
                         ),

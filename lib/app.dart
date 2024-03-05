@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'GibSpons',
       theme: lightTheme,
+      darkTheme: lightTheme,
       routerConfig: routes,
     );
   }

@@ -18,6 +18,29 @@ final lightTheme = ThemeData(
     ),
     labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
   ),
+  inputDecorationTheme: InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(
+        color: Colors.red,
+      ),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(
+        color: Colors.red,
+      ),
+    ),
+    errorStyle: const TextStyle(
+      color: Colors.red,
+    ),
+  ),
   fontFamily: GoogleFonts.outfit().fontFamily,
   filledButtonTheme: FilledButtonThemeData(style: primaryLightButtonStyle),
   colorScheme: const ColorScheme(

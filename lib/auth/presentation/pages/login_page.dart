@@ -80,10 +80,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           }
                           return null;
                         },
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
+                        decoration: const InputDecoration(
                           labelText: "Email",
                         ),
                       ),
@@ -111,9 +108,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                   ? Icons.visibility
                                   : Icons.visibility_off,
                             ),
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(8),
                           ),
                           labelText: "Password",
                         ),
