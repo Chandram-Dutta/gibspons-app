@@ -42,16 +42,7 @@ final routes = GoRouter(
       } else {
         return null;
       }
-      // if (state.uri.toString() == '/login' ||
-      //     state.uri.toString() == '/signup') {
-      //   if (user.organisation == null) {
-      //     return '/join-team';
-      //   } else {
-      //     return '/my-team';
-      //   }
-      // }
     }
-    return null;
   },
   routes: [
     ShellRoute(
