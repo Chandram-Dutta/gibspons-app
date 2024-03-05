@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:gibspons/auth/presentation/pages/invite_code_page.dart';
-import 'package:gibspons/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:gibspons/myteam/presentation/pages/myteam_page.dart';
 import 'package:gibspons/shared/presentation/pages/home_page.dart';
 import 'package:gibspons/auth/presentation/pages/login_page.dart';
-import 'package:gibspons/presentation/pages/mail_generation_page.dart';
-import 'package:gibspons/presentation/pages/settings_page.dart';
+import 'package:gibspons/presentation/pages/members_page.dart';
 import 'package:gibspons/auth/presentation/pages/signup_page.dart';
-import 'package:gibspons/presentation/pages/view_mails_page.dart';
+import 'package:gibspons/presentation/pages/sponsorships_page.dart';
 import 'package:gibspons/shared/presentation/widgets/gibspons_logo.dart';
 import 'package:go_router/go_router.dart';
 
@@ -28,7 +26,7 @@ final routes = GoRouter(
     } else {
       if (state.uri.toString() == '/login' ||
           state.uri.toString() == '/signup') {
-        return '/dashboard';
+        return '/my-team';
       } else {
         return null;
       }
@@ -43,20 +41,16 @@ final routes = GoRouter(
       },
       routes: [
         GoRoute(
-          path: '/dashboard',
-          builder: (context, state) => const DashboardPage(),
+          path: '/my-team',
+          builder: (context, state) => const MyTeamPage(),
         ),
         GoRoute(
-          path: '/generate-mails',
-          builder: (context, state) => const MailGenerationPage(),
+          path: '/members',
+          builder: (context, state) => const MembersPage(),
         ),
         GoRoute(
-          path: '/view-mails',
-          builder: (context, state) => const ViewMailsPage(),
-        ),
-        GoRoute(
-          path: '/settings',
-          builder: (context, state) => const SettingsPage(),
+          path: '/sponsorships',
+          builder: (context, state) => const SponsorshipsPage(),
         ),
       ],
     ),
@@ -117,10 +111,6 @@ final routes = GoRouter(
         GoRoute(
           path: '/signup',
           builder: (context, state) => const SignUpPage(),
-        ),
-        GoRoute(
-          path: '/invite-code',
-          builder: (context, state) => const InviteCodePage(),
         ),
       ],
     ),

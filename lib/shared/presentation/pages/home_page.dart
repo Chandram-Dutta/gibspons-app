@@ -59,12 +59,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                                 .colorScheme
                                 .onPrimaryContainer,
                             leading: const Icon(Icons.dashboard_rounded),
-                            title: const Text("Dashboard"),
+                            title: const Text("My Team"),
                             onTap: () {
                               setState(() {
                                 _selectedIndex = 0;
                               });
-                              context.go('/dashboard');
+                              context.go('/my-team');
                             },
                           ),
                           ListTile(
@@ -77,13 +77,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                             iconColor: Theme.of(context)
                                 .colorScheme
                                 .onPrimaryContainer,
-                            leading: const Icon(Icons.messenger_rounded),
-                            title: const Text("Generate Mails"),
+                            leading: const Icon(Icons.people_rounded),
+                            title: const Text("Members"),
                             onTap: () {
                               setState(() {
                                 _selectedIndex = 1;
                               });
-                              context.go('/generate-mails');
+                              context.go('/members');
                             },
                           ),
                           ListTile(
@@ -96,32 +96,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                             iconColor: Theme.of(context)
                                 .colorScheme
                                 .onPrimaryContainer,
-                            leading: const Icon(Icons.mail_rounded),
-                            title: const Text("View Mails"),
+                            leading: const Icon(Icons.monetization_on_rounded),
+                            title: const Text("Sponsorships"),
                             onTap: () {
                               setState(() {
                                 _selectedIndex = 2;
                               });
-                              context.go('/view-mails');
-                            },
-                          ),
-                          ListTile(
-                            selected: _selectedIndex == 3,
-                            selectedTileColor:
-                                Theme.of(context).colorScheme.secondary,
-                            textColor: Theme.of(context)
-                                .colorScheme
-                                .onPrimaryContainer,
-                            iconColor: Theme.of(context)
-                                .colorScheme
-                                .onPrimaryContainer,
-                            leading: const Icon(Icons.settings_rounded),
-                            title: const Text("Settings"),
-                            onTap: () {
-                              setState(() {
-                                _selectedIndex = 3;
-                              });
-                              context.go('/settings');
+                              context.go('/sponsorships');
                             },
                           ),
                         ],
@@ -176,16 +157,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                 });
                 switch (index) {
                   case 0:
-                    context.go('/dashboard');
+                    context.go('/my-team');
                     break;
                   case 1:
-                    context.go('/generate-mails');
+                    context.go('/members');
                     break;
                   case 2:
-                    context.go('/view-mails');
-                    break;
-                  case 3:
-                    context.go('/settings');
+                    context.go('/sponsorships');
                     break;
                 }
               },
@@ -194,25 +172,19 @@ class _HomePageState extends ConsumerState<HomePage> {
                   icon: Icon(
                     Icons.dashboard_rounded,
                   ),
-                  label: "Dashboard",
+                  label: "My Team",
                 ),
                 NavigationDestination(
                   icon: Icon(
-                    Icons.messenger_rounded,
+                    Icons.people_rounded,
                   ),
-                  label: "Generate Mails",
+                  label: "Members",
                 ),
                 NavigationDestination(
                   icon: Icon(
-                    Icons.mail_rounded,
+                    Icons.monetization_on_rounded,
                   ),
-                  label: "View Mails",
-                ),
-                NavigationDestination(
-                  icon: Icon(
-                    Icons.settings_rounded,
-                  ),
-                  label: "Settings",
+                  label: "Sponsorships",
                 ),
               ],
             ),
